@@ -16,23 +16,17 @@ const db = mysql.createConnection(
   console.log(`Connected to the associates_db database.`)
 );
 
-// Query database
-db.query('SELECT * FROM course_names', function (err, results) {
-    console.log(results);
-  });
-
-// Hardcoded query: DELETE FROM course_names WHERE id = 3;
-db.query(`DELETE FROM course_names WHERE id = ?`, 3, (err, result) => {
-  if (err) {
-    console.log(err);
-  }
-  console.log(result);
-});
-
-// Default response for any other request (Not Found)
-app.use((req, res) => {
-  res.status(404).end();
-});
+// Inquirer menu
+inquirer
+  .prompt([
+    {
+      type: 'list',
+      message: 'What would you like to do?',
+      name: 'menu',
+      choices: ['View all departments', 'View all roles', 'View all employees', 'Add a department', 'Add a role', 'Add an employee', 'Update an employee role'],
+    }
+  ]);
+// How do I make the inquirer prompt function like a menu?
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

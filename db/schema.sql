@@ -6,16 +6,17 @@ USE associates_db;
 
 
 CREATE TABLE department (
-  id INT,
+  id INT AUTO_INCREMENT,
   name VARCHAR(30) NOT NULL,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE role (
-    id INT,
+    id INT AUTO_INCREMENT,
     title VARCHAR(30),
     salary DECIMAL,
     department_id INT,
+    PRIMARY KEY (id),
     FOREIGN KEY (department_id)
         REFERENCES department(id)
 );
