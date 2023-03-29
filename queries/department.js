@@ -5,7 +5,8 @@ const ctable = require('console.table');
 
 function listDepartment() {
   db.query('SELECT * from department', function (err, results) {
-    console.log(results);
+    const table = ctable.getTable(results);
+    return table;
   });
 };
 

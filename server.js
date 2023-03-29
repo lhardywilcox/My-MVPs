@@ -37,8 +37,12 @@ const startMenu = () => {
     ])
 
     .then((answers) => {
-      if (answers.choices[0]) {
-        return listDepartment()
+      /* console.log(answers); Used to find out what the answer was listed under.*/
+      if (answers.menu === 'View all departments') {
+        db.query('SELECT * from department', function (err, results) {
+          console.log(results); /* Used to see what results were being pulled from the database. */
+          console.table(results);
+        });
       }
       /*   if(answers.choice[1]) {
   
@@ -57,13 +61,31 @@ const startMenu = () => {
         }
         if (answers.choice[6]) {
           
-        } */
+        } 
+    .prompt([
+      {  
+        type: 'list',
+        message: 'What would you like to do?',
+        name: 'start',
+        choices: ['Yes', 'No'],
+      }
+    ])
+    
+    .then((answers) => {
+      if (answers.choices === 'Yes'){
+        startMenu();
+      } else {
+
+        break;
+      }*/
     });
 };
 // How do I make the inquirer prompt function like a menu?
 
-startMenu();
+/* startMenu(); */
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+startMenu();
