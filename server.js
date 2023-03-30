@@ -42,43 +42,50 @@ const startMenu = () => {
         db.query('SELECT * from department', function (err, results) {
           console.log(results); /* Used to see what results were being pulled from the database. */
           console.table(results);
-        });
-      }
-      /*   if(answers.choice[1]) {
-  
-        }
-        if (answers.choice[2]) {
-  
-        }
-        if (answers.choice[3]) {
-          
-        }
-        if (answers.choice[4]) {
-          
-        }
-        if (answers.choice[5]) {
-          
-        }
-        if (answers.choice[6]) {
-          
-        } 
-    .prompt([
-      {  
-        type: 'list',
-        message: 'What would you like to do?',
-        name: 'start',
-        choices: ['Yes', 'No'],
-      }
-    ])
-    
-    .then((answers) => {
-      if (answers.choices === 'Yes'){
-        startMenu();
+        })
       } else {
+        if (answers.menu === 'View all roles') {
+          db.query('SELECT * from role', function (err, results) {
+            console.log(results);
+            console.table(results);
+          })
+        } else {
 
-        break;
-      }*/
-    });
+        }
+
+        /* 
+          if (answers.choice[2]) {
+    
+          }
+          if (answers.choice[3]) {
+            
+          }
+          if (answers.choice[4]) {
+            
+          }
+          if (answers.choice[5]) {
+            
+          }
+          if (answers.choice[6]) {
+            
+          } 
+      .prompt([
+        {  
+          type: 'list',
+          message: 'What would you like to do?',
+          name: 'start',
+          choices: ['Yes', 'No'],
+        }
+      ])
+      
+      .then((answers) => {
+        if (answers.choices === 'Yes'){
+          startMenu();
+        } else {
+  
+          break;
+        }*/
+      });
 };
 // How do I make the inquirer prompt function like a menu?
 
