@@ -13,7 +13,7 @@ addDepartment = () => {
     ])
 
     .then((answer) => {
-      let answer = answer.name;
+      let newDepartment = answer.name;
       db.query('INSERT INTO department', function (err, results) {
         console.table()
       })
@@ -21,4 +21,4 @@ addDepartment = () => {
 
 }
 
-module.exports = listDepartment;
+//module.exports = listDepartment;
